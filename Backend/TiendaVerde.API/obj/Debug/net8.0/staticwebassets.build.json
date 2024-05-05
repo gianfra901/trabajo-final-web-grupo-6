@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "qwWoVNAZmmKRcO9w6+ROyvW4ETDDZTZHRjL84/g9dyM=",
+  "Source": "TiendaVerde.API",
+  "BasePath": "_content/TiendaVerde.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

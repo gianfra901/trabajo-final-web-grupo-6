@@ -1,0 +1,165 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.API\\TiendaVerde.API.csproj": {}
+  },
+  "projects": {
+    "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.API\\TiendaVerde.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.API\\TiendaVerde.API.csproj",
+        "projectName": "TiendaVerde.API",
+        "projectPath": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.API\\TiendaVerde.API.csproj",
+        "packagesPath": "C:\\Users\\ritua\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ritua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/gianfra901/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\TiendaVerde.Repository.csproj": {
+                "projectPath": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\TiendaVerde.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\TiendaVerde.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\TiendaVerde.Repository.csproj",
+        "projectName": "TiendaVerde.Repository",
+        "projectPath": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\TiendaVerde.Repository.csproj",
+        "packagesPath": "C:\\Users\\ritua\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive\\PC-GIAN\\UPC\\2024-1\\Web\\trabajo-final-web-grupo-6\\Backend\\TiendaVerde.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ritua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/gianfra901/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
