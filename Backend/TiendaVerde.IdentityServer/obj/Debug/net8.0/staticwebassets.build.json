@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Lnz7j2VwIsMqHM3rbiJUdzlqVoQ2YnIJZ6oXraEuX24=",
+  "Source": "TiendaVerde.IdentityServer",
+  "BasePath": "_content/TiendaVerde.IdentityServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

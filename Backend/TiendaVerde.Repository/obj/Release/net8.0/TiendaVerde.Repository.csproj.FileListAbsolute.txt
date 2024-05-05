@@ -1,0 +1,13 @@
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\bin\Release\net8.0\TiendaVerde.Repository.deps.json
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\bin\Release\net8.0\TiendaVerde.Repository.dll
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\bin\Release\net8.0\TiendaVerde.Repository.pdb
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.csproj.AssemblyReference.cache
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.AssemblyInfoInputs.cache
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.AssemblyInfo.cs
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.csproj.CoreCompileInputs.cache
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.sourcelink.json
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.dll
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\refint\TiendaVerde.Repository.dll
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\TiendaVerde.Repository.pdb
+D:\OneDrive\PC-GIAN\UPC\2024-1\Web\trabajo-final-web-grupo-6\Backend\TiendaVerde.Repository\obj\Release\net8.0\ref\TiendaVerde.Repository.dll
