@@ -10,7 +10,7 @@ import { AuthService } from '../../application/service/auth.service';
 })
 export class HomeComponent {
 
-  constructor(private readonly ps: ProjectService, readonly authService: AuthService) {}  
+  constructor(private readonly ps: ProjectService, private readonly authService: AuthService) {}  
   products : any = []
   
   customOptions: OwlOptions = {
@@ -39,14 +39,19 @@ export class HomeComponent {
     nav: true
   }
 
-  __on_agregarCarrito() {
+  __on_agregar_carrito() {
     localStorage.setItem("carrito", "1");
   }
   __obtener_productos() {
-    let token = this.authService.getUsuarioFromSession().token;
-    this.ps.__obtener_productos_json(token).subscribe((rest: any) => {
-      this.products = rest
-    })
+    let usuarioLS = this.authService.getUsuarioFromSession();
+    if (usuarioLS != null)
+    {
+      this.ps.__obtener_productos_json(usuarioLS.token).subscribe((rest: any) => {
+        this.products = rest
+      })      
+    } 
+
+
   }
   ngOnInit() :void {
     

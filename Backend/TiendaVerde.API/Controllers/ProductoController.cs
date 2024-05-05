@@ -18,6 +18,7 @@ public class ProductoController : ControllerBase
 
     }
     [HttpGet(Name = "GetProducto")]
+    //[AllowAnonymous]
     public IResult Get()
     {
         var listaProductos = _productoRepository.ObtenerProductos();

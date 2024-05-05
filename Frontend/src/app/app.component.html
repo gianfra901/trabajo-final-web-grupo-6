@@ -23,8 +23,12 @@
         <div class="header__top__right__auth" *ngIf="usuario =='' ">
             <a routerLink="login"><i class="fa fa-user"></i> Login</a>
         </div>
-        <div class="header__top__right__auth" *ngIf="usuario !='' ">
-            <a routerLink="login"><i class="fa fa-user"></i> {{usuario}}</a>
+        <div class="header__top__right__language" *ngIf="usuario !='' ">
+            <div><i class="fa fa-user"></i> {{usuario}}</div>
+            <span class="arrow_carrot-down"></span>
+            <ul>
+                <li><a (click)="__on_cerrar_sesion()" >Cerrar Sesión</a></li>
+            </ul>
         </div>        
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -91,8 +95,13 @@
                         <div class="header__top__right__auth" *ngIf="usuario =='' ">
                             <a routerLink="login"><i class="fa fa-user"></i> Login</a>
                         </div>
-                        <div class="header__top__right__auth" *ngIf="usuario !='' ">
-                            <a routerLink="login"><i class="fa fa-user"></i> {{usuario}}</a>
+                        <div class="header__top__right__language" *ngIf="usuario !='' ">
+                            <!-- <a routerLink="login"><i class="fa fa-user"></i> {{usuario}}</a> -->
+                            <div><i class="fa fa-user"></i> {{usuario}}</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a (click)="__on_cerrar_sesion()">Cerrar Sesión</a></li>
+                            </ul>                            
                         </div>                        
                     </div>
                 </div>
