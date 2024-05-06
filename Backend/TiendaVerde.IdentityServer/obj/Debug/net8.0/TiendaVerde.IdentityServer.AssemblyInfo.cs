@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiendaVerde.IdentityServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86bf624d33ee3f378bef0a5c553359662a357bd7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+954d93475f31348206eb3ebf74edec5edb837c84")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiendaVerde.IdentityServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiendaVerde.IdentityServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

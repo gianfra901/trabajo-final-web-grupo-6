@@ -1,25 +1,33 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteModel } from '../models/ClienteModel';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private token!: string;
-  private idCliente!: string;
-  private nombres!: string;
-  private apellidos!: string;
-  private dni!: string;
-  private direccion!: string;
-  private correo!: string;
+  private totalCarrito = new BehaviorSubject<number>(0);
+  private totalCantidad = new BehaviorSubject<number>(0);
+  
+  constructor(private readonly http: HttpClient) {}
 
-  constructor(private readonly http: HttpClient) { }
+  get numeroCarrito$() {
+    return this.totalCarrito.asObservable();
+  }
+  get numeroCantidad$() {
+    return this.totalCantidad.asObservable();
+  }
+  actualizarNumero(nuevoNumero: number) {
+    this.totalCarrito.next(nuevoNumero);
+  }
+  actualizarCantidad(nuevoNumero: number) {
+    this.totalCantidad.next(nuevoNumero);
+  }  
 
   __obtener_tokenauth_json(correo: string, contrasena: string) {
     // return this.http.get('https://wappupcapi.azurewebsites.net/api/Token')
-    
     return this.http.get(`https://localhost:7012/api/Token?correo=${correo}&contrasena=${contrasena}`)
   }
   
@@ -32,50 +40,12 @@ export class AuthService {
     return data;
   }
 
-  // public setToken(token: string): void {
-  //   this.token = token;
-  // }
-  // public getToken(): string {
-  //   return this.token;
-  // }
-
-  // public setIdCliente(idCliente: string): void {
-  //   this.idCliente = idCliente;
-  // }
-  // public getIdCliente(): string {
-  //   return this.idCliente;
-  // }
-  
-  // public setNombres(nombres: string): void {
-  //   this.nombres = nombres;
-  // }
-  // public getNombres(): string {
-  //   return this.nombres;
-  // }
-  
-  // public setApellidos(apellidos: string): void {
-  //   this.apellidos = apellidos;
-  // }
-  // public getApellidos(): string {
-  //   return this.apellidos;
-  // }
-
-  // public setDni(dni: string): void {
-  //   this.dni = dni;
-  // }
-  // public getDni(): string {
-  //   return this.dni;
-  // }    
-  // public setDireccion(direccion: string): void {
-  //   this.direccion = direccion;
-  // }
-  // public getDireccion(): string {
-  //   return this.direccion;
-  // }
-  // public setCorreo(correo: string): void {
-  //   this.correo = correo;
-  // }
-  // public getCorreo(): string {
-  //   return this.correo;
-  // }     
+  public updateUsuarioPedido(idPedido: string) {
+    let ls = localStorage.getItem("customer");
+    if (ls != null){
+      var data: ClienteModel | any = JSON.parse(ls);
+      data.idPedido = idPedido;
+      localStorage.setItem("customer", JSON.stringify(data));
+    }
+  }
 }

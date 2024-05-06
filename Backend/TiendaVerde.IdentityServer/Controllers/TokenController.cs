@@ -58,6 +58,7 @@ public class TokenController : ControllerBase
             Dni = cliente.DNI,
             Direccion = cliente.Direccion,
             Correo = cliente.Correo,
+            IdPedido = cliente.IdPedido,
             Token = tokenString
         });
     }

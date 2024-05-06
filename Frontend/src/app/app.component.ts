@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'tiendaverde';
   usuario: string = "";
+  totalCarrito = this.authService.numeroCarrito$;
+  totalCantidad = this.authService.numeroCantidad$;
+
   constructor(private readonly authService: AuthService, private router: Router) {}  
 
   ngOnInit() :void {
