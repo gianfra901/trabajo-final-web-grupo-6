@@ -6,7 +6,6 @@ namespace TiendaVerde.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class ProductoController : ControllerBase
 {
     private readonly IProductoRepository _productoRepository;
@@ -17,11 +16,32 @@ public class ProductoController : ControllerBase
         _configuration = configuration;
 
     }
-    [HttpGet(Name = "GetProducto")]
-    //[AllowAnonymous]
+    [HttpGet("")]
+    [AllowAnonymous]
     public IResult Get()
     {
         var listaProductos = _productoRepository.ObtenerProductos();
+        return TypedResults.Ok(listaProductos);
+    }
+    [HttpGet("{idProducto}")]
+    [AllowAnonymous]
+    public IResult GetProducto(string idProducto)
+    {
+        var listaProductos = _productoRepository.ObtenerDetalleProducto(idProducto);
+        return TypedResults.Ok(listaProductos);
+    }
+    [HttpGet("items/{items}")]
+    [AllowAnonymous]
+    public IResult ObtenerProductosTopNItems(int items)
+    {
+        var listaProductos = _productoRepository.ObtenerProductosTopNItems(items);
+        return TypedResults.Ok(listaProductos);
+    }
+    [HttpGet("categoria/{categoria}")]
+    [AllowAnonymous]
+    public IResult ObtenerProductosXCategoria(string categoria)
+    {
+        var listaProductos = _productoRepository.ObtenerProductosXCategoria(categoria);
         return TypedResults.Ok(listaProductos);
     }
 }

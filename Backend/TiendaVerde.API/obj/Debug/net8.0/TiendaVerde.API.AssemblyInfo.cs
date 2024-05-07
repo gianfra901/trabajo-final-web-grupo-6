@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiendaVerde.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86bf624d33ee3f378bef0a5c553359662a357bd7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+614c78380780d81cdf7d5c72832e708cd9f792e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiendaVerde.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiendaVerde.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,6 +8,7 @@ import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { ShopCartCheckoutComponent } from './pages/shop-cart-checkout/shop-cart-checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent, pathMatch: 'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: "shop-details/:id", component: ShopDetailsComponent},
   {path: "shop-cart", component: ShopCartComponent},
   {path: "shop-cart-checkout", component: ShopCartCheckoutComponent},
-  {path: "login", component: LoginComponent}
+  {path: "login", component: LoginComponent},
+  {path: "register", component: RegisterComponent}
 ];
 
 @NgModule({

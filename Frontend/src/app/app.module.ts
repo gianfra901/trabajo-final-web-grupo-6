@@ -16,6 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { TOASTR_TOKEN, Toastr } from './application/service/toastr.service';
+import { RegisterComponent } from './pages/register/register.component';
+
+declare const toastr: Toastr;
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { LoginComponent } from './pages/login/login.component';
     ShopCartComponent,
     ShopCartCheckoutComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +41,15 @@ import { LoginComponent } from './pages/login/login.component';
     CarouselModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ToastrModule.forRoot()
   ],
-  providers: [provideAnimations()],
+  providers: [
+    provideAnimations(),
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+  }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -45,4 +57,5 @@ import { LoginComponent } from './pages/login/login.component';
   ]
  
 })
+
 export class AppModule { }

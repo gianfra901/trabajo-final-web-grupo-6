@@ -22,11 +22,16 @@
             <form [formGroup]="contactusForm">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 text-center">
+                        <span>Para usuarios nuevos, registrarse<a routerLink="/register" style="color: rgb(46, 115, 233);"> aquí</a></span>
+                    </div> 
+                </div>
+                <div class="row">                     
+                    <div class="col-lg-12 col-md-12 text-center">
                         <input type="text" formControlName="correo" placeholder="Correo electrónico" style="width: 400px;">
                     </div>
                     <div class="col-lg-12 col-md-12 text-center">
                         <input type="password" formControlName="contrasena" placeholder="Contraseña"style="width: 400px;">
-                    </div>
+                    </div>                  
                     <div class="col-lg-12 text-center">
                         <button (click)="__on_enviar()" class="site-btn">Iniciar sesión</button>
                     </div>

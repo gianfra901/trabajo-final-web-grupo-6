@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using TiendaVerde.Repository.Entities;
 using TiendaVerde.Repository.Interfaces;
 
 namespace TiendaVerde.IdentityServer.Controllers;
@@ -17,6 +18,12 @@ public class TokenController : ControllerBase
     {
         _configuration = configuration;
         _clienteRepository = clienteRepository;
+    }
+    [HttpPost(Name = "RegistrarCliente")]
+    public IResult Post(DatosCliente datosCliente)
+    {
+        var cliente = _clienteRepository.RegistrarCliente(datosCliente);
+        return TypedResults.Ok(cliente);
     }
     [HttpGet(Name = "GenerateToken")]
     public IResult Get(string correo, string contrasena)
@@ -58,6 +65,8 @@ public class TokenController : ControllerBase
             Dni = cliente.DNI,
             Direccion = cliente.Direccion,
             Correo = cliente.Correo,
+            Telefono = cliente.Telefono,
+            IdPedido = cliente.IdPedido,
             Token = tokenString
         });
     }

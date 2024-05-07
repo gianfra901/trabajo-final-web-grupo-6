@@ -11,6 +11,31 @@ public class ClienteRepository : IClienteRepository
     {
         _baseRepository = baseRepository;
     }
+    public int RegistrarCliente(DatosCliente datosCliente)
+    {
+        int cliente = 0;
+        var dictionaryParams = new Dictionary<string, object>
+        {
+            { "@NOMBRES", datosCliente.Nombres },
+            { "@APELLIDOS", datosCliente.Apellidos },
+            { "@DNI", datosCliente.DNI },
+            { "@DIRECCION", datosCliente.Direccion },
+            { "@CORREO", datosCliente.Correo },
+            { "@CONTRASENA", datosCliente.Contrasena },
+            { "@TELEFONO", datosCliente.Telefono }
+        };
+        DynamicParameters parameters = new DynamicParameters(dictionaryParams);
+        using (var connection = _baseRepository.GetSqlConnection())
+        {
+            cliente = connection.Execute(
+                "REGISTRAR_CLIENTE",
+                parameters,
+                commandType: System.Data.CommandType.StoredProcedure
+               );
+        }
+
+        return cliente;
+    }
     public Cliente GetCliente(string correo, string contrasena)
     {
         var cliente = new Cliente();
@@ -23,8 +48,9 @@ public class ClienteRepository : IClienteRepository
         using (var connection = _baseRepository.GetSqlConnection())
         {
             cliente = connection.Query<Cliente>(
-                "SELECT * FROM CLIENTE WHERE CORREO = @CORREO AND CONTRASENA = @CONTRASENA", 
-                parameters
+                "VALIDAR_CLIENTE",
+                parameters,
+                commandType: System.Data.CommandType.StoredProcedure
                ).FirstOrDefault();
         }
 

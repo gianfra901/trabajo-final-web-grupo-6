@@ -11,4 +11,5 @@ public class Producto
     public string IdCategoria { get; set; } = string.Empty;
     public double Precio { get; set; }
     public double Stock { get; set; }
+    public string RutaImagen { get; set; } = string.Empty;
 }

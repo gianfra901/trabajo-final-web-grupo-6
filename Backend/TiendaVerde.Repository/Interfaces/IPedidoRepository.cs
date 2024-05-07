@@ -4,6 +4,9 @@ namespace TiendaVerde.Repository.Interfaces;
 
 public interface IPedidoRepository
 {
-    public List<Pedido> ObtenerPedido();
-    public int RegistrarPedido(Pedido pedido);
+    public IEnumerable<PedidoDetalle> ObtenerPedido(string pedido);
+    public string RegistrarPedido(Pedido pedido);
+    public int ActualizarPedido(PedidoDetalleUpdate pedidoDetalleUpdate);
+    public int ActualizarEstadoPedido(PedidoDetalleUpdateEstado pedidoDetalleUpdateEstado);
+    public int EliminarPedido(string idPedido, string idProducto);
 }
