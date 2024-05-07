@@ -23,8 +23,9 @@ public class ClienteRepository : IClienteRepository
         using (var connection = _baseRepository.GetSqlConnection())
         {
             cliente = connection.Query<Cliente>(
-                "SELECT C.IDCLIENTE, C.NOMBRES, C.APELLIDOS, C.DNI, C.DIRECCION, C.CORREO, C.CONTRASENA, ISNULL(P.IDPEDIDO,'') AS IDPEDIDO FROM CLIENTE C LEFT JOIN PEDIDO P ON C.IDCLIENTE = P.IDCLIENTE WHERE C.CORREO = @CORREO AND C.CONTRASENA = @CONTRASENA AND P.REALIZADO = 0", 
-                parameters
+                "VALIDAR_CLIENTE",
+                parameters,
+                commandType: System.Data.CommandType.StoredProcedure
                ).FirstOrDefault();
         }
 

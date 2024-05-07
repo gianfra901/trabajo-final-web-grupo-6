@@ -27,8 +27,7 @@ export class ShopCartComponent {
           this.total = this.total+ x.total;
           this.cantidad = this.cantidad + 1;
         });
-        this.authService.actualizarCantidad(this.cantidad);
-        this.authService.actualizarNumero(this.total);
+        this.authService.actualizarTotalesCarrito();
       })      
     } 
   }
@@ -46,7 +45,6 @@ export class ShopCartComponent {
       })      
     } 
   }
-
   __on_eliminar_carrito(idProducto: string){   
     let usuarioLS = this.authService.getUsuarioFromSession();
     if (usuarioLS != null)
@@ -59,14 +57,12 @@ export class ShopCartComponent {
       })      
     } 
   }  
-
-
   __on_aplicar_cupon(){
     let codigoCupon = (<HTMLInputElement>document.getElementById("txtCupon")).value
     if (codigoCupon == "FINAL"){
       alert("Ha ganado un 10% de descuento.");
       this.total = parseFloat(Math.round(this.total * 0.9).toFixed(2));
-      this.authService.actualizarNumero(this.total);
+      this.authService.actualizarTotalesCarrito();
     }else{
       alert("No existe cupón.");
     }
@@ -76,22 +72,3 @@ export class ShopCartComponent {
     (<HTMLInputElement>document.getElementById("txtCupon")).value = "";
   }
 }
-
-// cantidad
-// : 
-// 2
-// idPedido
-// : 
-// "PE05"
-// idPedidoDetalle
-// : 
-// "11"
-// idProducto
-// : 
-// "P003"
-// precio
-// : 
-// 5.4
-// total
-// : 
-// 10.8

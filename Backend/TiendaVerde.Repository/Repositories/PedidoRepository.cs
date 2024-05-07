@@ -54,7 +54,7 @@ public class PedidoRepository: IPedidoRepository
         using (var connection = _baseRepository.GetSqlConnection())
         {
             pedidoDetalle = connection.Query<PedidoDetalle>(
-                "SELECT PD.IDPEDIDODETALLE, PD.IDPEDIDO, PD.IDPRODUCTO, PR.NOMBRE AS NOMBREPRODUCTO, PD.CANTIDAD, PD.PRECIO, " +
+                "SELECT PD.IDPEDIDODETALLE, PD.IDPEDIDO, PD.IDPRODUCTO, PR.NOMBRE AS NOMBREPRODUCTO, PR.RUTAIMAGEN, PD.CANTIDAD, PD.PRECIO, " +
                 " PD.TOTAL  FROM PEDIDO P " +
                 " INNER JOIN PEDIDODETALLE PD ON P.IDPEDIDO = PD.IDPEDIDO " +
                 " INNER JOIN PRODUCTO PR ON PD.IDPRODUCTO = PR.IDPRODUCTO " +

@@ -35,7 +35,7 @@
                         <tbody>
                             <tr *ngFor="let d of detallePedido">
                                 <td class="shoping__cart__item">
-                                    <img src="../../assets/img/cart/cart-1.jpg" alt="">
+                                    <img src="{{d.rutaImagen}}" width="100px" alt="">
                                     <h5>{{d.nombreProducto}}</h5>
                                 </td>
                                 <td class="shoping__cart__price">
@@ -52,7 +52,7 @@
                                     S/.{{d.total}}
                                 </td>
                                 <td>
-                                    <a (click)="__on_actualizar_carrito(d.idProducto)" class="primary-btn"><span class="icon_loading"></span></a>
+                                    <a (click)="__on_actualizar_carrito(d.idProducto)" class="primary-btn" style="cursor: pointer;"><span class="icon_loading"></span></a>
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <a (click)="__on_eliminar_carrito(d.idProducto)"><span class="icon_close"></span></a>
@@ -77,7 +77,7 @@
                         <h5>Cupón Descuento</h5>
                         <form action="#">
                             <input type="text" id="txtCupon" placeholder="Ingresaa código cupón">
-                            <a (click)="__on_aplicar_cupon()" class="site-btn">Aplicar Cupón</a>
+                            <a style="cursor: pointer;" (click)="__on_aplicar_cupon()" class="site-btn">Aplicar Cupón</a>
                         </form> 
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         <li>Subtotal <span>S/. {{total | number: '1.1' }}</span></li>
                         <li>Total <span>S/. {{total | number: '1.1' }}</span></li>
                     </ul>
-                    <a routerLink="/shop-cart-checkout" class="primary-btn">IR A CHECKOUT</a>
+                    <a style="cursor: pointer;" routerLink="/shop-cart-checkout" class="primary-btn">IR A CHECKOUT</a>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@
     <div class="container">
         <div class="checkout__form">
             <h4>Detalles de facturación</h4>
-            <form action="#">
+            <form [formGroup]="checkoutForm">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -40,18 +40,18 @@
                         </div>
                         <div class="checkout__input">
                             <p>Dirección<span>*</span></p>
-                            <input type="text" value={{direccion}} placeholder="Street Address" class="checkout__input__add">
+                            <input type="text" formControlName="direccion" [(ngModel)]="direccion" placeholder="Street Address" class="checkout__input__add">
                             <input type="text" placeholder="Referencia de dirección (opcional)">
                         </div>
                         <div class="checkout__input">
                             <p>Correo<span>*</span></p>
-                            <input type="text" value={{correo}}>
+                            <input type="text" formControlName="correo" [(ngModel)]="correo">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Móvil<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" formControlName="telefono" [(ngModel)]="telefono">
                                 </div>
                             </div>
                             <div class="col-lg-6">

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../application/service/auth.service';
 import { PedidoService } from '../../application/service/pedido.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shop-cart-checkout',
@@ -18,8 +19,16 @@ export class ShopCartCheckoutComponent {
   direccion: string = "";
   dni: string = "";
   correo: string = "";
+  telefono: string = "";
 
-  constructor(private readonly authService: AuthService, private readonly pedidoService: PedidoService, private router: Router) {}
+  constructor(private readonly authService: AuthService, private readonly pedidoService: PedidoService, private router: Router, private fb:FormBuilder) {}
+  
+  checkoutForm = this.fb.group({
+    direccion: ['', Validators.required],
+    correo: ['', [Validators.required, Validators.email]],
+    telefono: ['', Validators.required]
+  })
+    
   ngOnInit() :void {
     let usuarioLS = this.authService.getUsuarioFromSession();
     if (usuarioLS != null)
@@ -29,6 +38,7 @@ export class ShopCartCheckoutComponent {
       this.direccion = usuarioLS.direccion;
       this.dni = usuarioLS.dni;
       this.correo = usuarioLS.correo;
+      this.telefono = usuarioLS.telefono;
     }
     this.__obtener_pedidoDetalle();
   }
@@ -44,32 +54,35 @@ export class ShopCartCheckoutComponent {
           this.total = this.total+ x.total;
           this.cantidad = this.cantidad + 1;
         });
-        this.authService.actualizarCantidad(this.cantidad);
-        this.authService.actualizarNumero(this.total);
+        this.authService.actualizarTotalesCarrito();
       })      
     } 
   }
 
   __on_actualizarEstado_pedido() {
-    this.total = 0;
-    this.cantidad = 0;
-    let usuarioLS = this.authService.getUsuarioFromSession();
-    if (usuarioLS != null)
-    {
-      this.pedidoService.__actualizarEstado_pedido(usuarioLS.token, usuarioLS.idPedido, true).subscribe((rest: any) => {
-        if (rest>=1){
-          this.__obtener_pedidoDetalle();
-          this.authService.actualizarCantidad(0);
-          this.authService.actualizarNumero(0);
+    if(this.checkoutForm.valid) {
+      this.total = 0;
+      this.cantidad = 0;
+      let usuarioLS = this.authService.getUsuarioFromSession();
+      if (usuarioLS != null)
+      {
+        this.pedidoService.__actualizarEstado_pedido(usuarioLS.token, usuarioLS.idPedido, true).subscribe((rest: any) => {
+          if (rest>=1){
+            this.__obtener_pedidoDetalle();
+            this.authService.actualizarTotalesCarrito();
+            alert("Pedido completado satisfactoriamente.")
+            this.router.navigate(['']).then(() => {
+              window.location.reload();
+            });
+  
+          }
+        })      
+      } 
+    } else {
+      alert("Formulario no valido");
+    }
 
-          alert("Pedido completado satisfactoriamente.")
-          this.router.navigate(['']).then(() => {
-            window.location.reload();
-          });
 
-        }
-      })      
-    } 
   }
 
 }

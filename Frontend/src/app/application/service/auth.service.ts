@@ -2,16 +2,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteModel } from '../models/ClienteModel';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { PedidoService } from './pedido.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  total: number = 0;
+  cantidad: number = 0;  
   private totalCarrito = new BehaviorSubject<number>(0);
   private totalCantidad = new BehaviorSubject<number>(0);
   
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient, private readonly pedidoService: PedidoService) {}
 
   get numeroCarrito$() {
     return this.totalCarrito.asObservable();
@@ -19,13 +21,22 @@ export class AuthService {
   get numeroCantidad$() {
     return this.totalCantidad.asObservable();
   }
-  actualizarNumero(nuevoNumero: number) {
-    this.totalCarrito.next(nuevoNumero);
-  }
-  actualizarCantidad(nuevoNumero: number) {
-    this.totalCantidad.next(nuevoNumero);
-  }  
+  actualizarTotalesCarrito() {
+    this.total = 0;
+    this.cantidad = 0;
+    let usuarioLS = this.getUsuarioFromSession();
+    if (usuarioLS != null){
+      this.pedidoService.__obtener_pedido(usuarioLS.token, usuarioLS.idPedido).subscribe((rest: any) => {
+        rest.forEach((x: any) => {
+          this.total = this.total+ x.total;
+          this.cantidad = this.cantidad + x.cantidad;
+        });
+        this.totalCantidad.next(this.cantidad);
+        this.totalCarrito.next(this.total);
+        }); 
+    } 
 
+  }
   __obtener_tokenauth_json(correo: string, contrasena: string) {
     // return this.http.get('https://wappupcapi.azurewebsites.net/api/Token')
     return this.http.get(`https://localhost:7012/api/Token?correo=${correo}&contrasena=${contrasena}`)

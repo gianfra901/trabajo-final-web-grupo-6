@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ProjectService } from '../../application/service/project.service';
+import { ProductService } from '../../application/service/producto.service';
 import { AuthService } from '../../application/service/auth.service';
 import { PedidoService } from '../../application/service/pedido.service';
 import { PedidoModel } from '../../application/models/PedidoModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,10 @@ export class HomeComponent {
   cantidad: number = 0;
 
   constructor(
-    private readonly ps: ProjectService, 
+    private readonly ps: ProductService, 
     private readonly authService: AuthService, 
-    private readonly pedidoService: PedidoService
-    // private pedidoModel: PedidoModel
+    private readonly pedidoService: PedidoService,
+    private router: Router
   ) {}  
   products : any = []
   
@@ -56,40 +57,21 @@ export class HomeComponent {
       this.pedidoService.__registrar_pedido(usuarioLS.token, pedido).subscribe((resp: any)=>{
       this.authService.updateUsuarioPedido(resp);
       alert("Producto añadido");
-      this.__refrescarTotales();
+      this.authService.actualizarTotalesCarrito();
       });
-    } 
+    }else{
+      alert("Inicie sesión para añadir productos.");
+    }
   }
   __obtener_productos() {
-    let usuarioLS = this.authService.getUsuarioFromSession();
-    if (usuarioLS != null)
-    {
-      this.ps.__obtener_productos_json(usuarioLS.token).subscribe((rest: any) => {
-        this.products = rest
-        console.log(rest);
-        
-      })      
-    } 
+    this.ps.__obtener_productos_json().subscribe((rest: any) => {
+      this.products = rest;
+    })     
   }
-  __refrescarTotales(){
-    this.total = 0;
-    this.cantidad = 0;
-    let usuarioLS = this.authService.getUsuarioFromSession();
-    if (usuarioLS != null){
-      this.pedidoService.__obtener_pedido(usuarioLS.token, usuarioLS.idPedido).subscribe((rest: any) => {
-        rest.forEach((x: any) => {
-          this.total = this.total+ x.total;
-          this.cantidad = this.cantidad + 1;
-        });
-        this.authService.actualizarCantidad(this.cantidad);
-        this.authService.actualizarNumero(this.total);
-        }); 
-    }    
-   
-  }
-  ngOnInit() :void {
-    
+  __on_detalle_producto(idProducto: string) {
+    this.router.navigate([`/shop-details/${idProducto}`]);
+  }  
+  ngOnInit() :void { 
     this.__obtener_productos();
-    this.__refrescarTotales()
   }
 }

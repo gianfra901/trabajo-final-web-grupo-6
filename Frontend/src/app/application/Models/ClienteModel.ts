@@ -5,6 +5,7 @@ export interface ClienteModel {
     dni: string;
     direccion: string;
     correo: string;
+    telefono: string;
     idPedido: string;
     token: string;
   }
