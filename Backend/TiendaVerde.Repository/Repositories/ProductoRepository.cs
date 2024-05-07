@@ -23,7 +23,7 @@ public class ProductoRepository : IProductoRepository
         using (var connection = _baseRepository.GetSqlConnection())
         {
             producto = connection.Query<Producto>(
-                "SELECT * FROM PRODUCTO WHERE IDPRODUCTO=@IDPRODUCTO",
+                "OBTENER_DETALLE_PRODUCTO",
                 parameters).FirstOrDefault();
         }
         return producto ?? new Producto();
@@ -34,17 +34,22 @@ public class ProductoRepository : IProductoRepository
         var returnList = new List<Producto>();
         using (var connection = _baseRepository.GetSqlConnection())
         {
-            returnList = connection.Query<Producto>("SELECT * FROM PRODUCTO", commandType: System.Data.CommandType.Text).ToList();
+            returnList = connection.Query<Producto>("OBTENER_PRODUCTOS_DESTACADOS", commandType: System.Data.CommandType.StoredProcedure).ToList();
         }
         return returnList;
     }
 
     public List<Producto> ObtenerProductosTopNItems(int items)
     {
+        var dictionaryParams = new Dictionary<string, object>
+        {
+            { "@ITEMS", items }
+        };
+        DynamicParameters parameters = new DynamicParameters(dictionaryParams);
         var returnList = new List<Producto>();
         using (var connection = _baseRepository.GetSqlConnection())
         {
-            returnList = connection.Query<Producto>($"SELECT TOP {items} * FROM PRODUCTO ORDER BY NEWID()", commandType: System.Data.CommandType.Text).ToList();
+            returnList = connection.Query<Producto>("OBTENER_PRODUCTOS_N_TOP_ITEMS", parameters).ToList();
         }
         return returnList;
     }
@@ -59,7 +64,7 @@ public class ProductoRepository : IProductoRepository
         var returnList = new List<Producto>();
         using (var connection = _baseRepository.GetSqlConnection())
         {
-            returnList = connection.Query<Producto>("SELECT * FROM PRODUCTO WHERE IDCATEGORIA=@CATEGORIA", parameters).ToList();
+            returnList = connection.Query<Producto>("OBTENER_PRODUCTOS_X_CATEGORIA", parameters).ToList();
         }
         return returnList;
     }

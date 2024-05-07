@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ProductService } from '../../application/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PedidoService } from '../../application/service/pedido.service';
 import { AuthService } from '../../application/service/auth.service';
 import { PedidoModel } from '../../application/models/PedidoModel';
+import { TOASTR_TOKEN, Toastr } from '../../application/service/toastr.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -20,7 +21,8 @@ export class ShopDetailsComponent {
     private readonly authService: AuthService, 
     private readonly pedidoService: PedidoService,    
     private routeActive: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
   ) {}  
   getParams(){
     this.routeActive.params.subscribe(params => {
@@ -38,11 +40,19 @@ export class ShopDetailsComponent {
       let pedido = new PedidoModel(usuarioLS.idPedido, usuarioLS.idCliente, 100, false, idProducto, 1, precio);
       this.pedidoService.__registrar_pedido(usuarioLS.token, pedido).subscribe((resp: any)=>{
       this.authService.updateUsuarioPedido(resp);
-      alert("Producto añadido");
+      this.success("Producto añadido");
       this.authService.actualizarTotalesCarrito();
+      }, 
+      (error: any) =>{
+        if (error.status == 401){
+          localStorage.removeItem("customer");
+          this.router.navigate(['/login']).then(() => {
+            window.location.reload();
+          });
+        }
       });
     }else{
-      alert("Inicie sesión para añadir productos.")
+      this.info("Inicie sesión para añadir productos.");
     }
   }
   __on_detalle_producto(idProducto: string) {
@@ -54,5 +64,11 @@ export class ShopDetailsComponent {
     this.ps.__obtener_productos_top_items_json(4).subscribe((rest: any) => {
       this.products = rest;
     })  
+  }
+  success(message: string): void {
+    this.toastr.success(message, "Éxito");
+  }
+  info(message: string): void {
+    this.toastr.info(message, "Info");
   }
 }

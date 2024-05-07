@@ -1,5 +1,5 @@
 <!-- Humberger Begin -->
-<!-- <div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
         <a routerLink=""><img src="assets/img/logo.png" alt="" height="70px"></a>
@@ -59,7 +59,7 @@
             <li>Free Shipping for all Order of S/.99</li>
         </ul>
     </div>
-</div> -->
+</div>
 <!-- Humberger End -->
 
 <!-- Header Section Begin -->
@@ -100,7 +100,7 @@
                             <div><i class="fa fa-user"></i> {{usuario}}</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
-                                <li><a (click)="__on_cerrar_sesion()">Cerrar Sesión</a></li>
+                                <li><a (click)="__on_cerrar_sesion()" style="color: #FFF!important;">Cerrar Sesión</a></li>
                             </ul>                            
                         </div>                        
                     </div>
@@ -135,7 +135,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a routerLink="shop-cart"><i class="fa fa-shopping-bag"></i> <span>{{totalCantidad | async }}</span></a></li>
+                        <li><a style="cursor: pointer;" (click)="__on_validar_carntidad_carrito()"><i class="fa fa-shopping-bag"></i> <span>{{totalCantidad | async }}</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>S/.{{totalCarrito | async | number: '1.1' }}</span></div>
                 </div>

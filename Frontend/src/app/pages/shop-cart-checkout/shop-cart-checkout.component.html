@@ -40,7 +40,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Dirección<span>*</span></p>
-                            <input type="text" formControlName="direccion" [(ngModel)]="direccion" placeholder="Street Address" class="checkout__input__add">
+                            <input type="text" formControlName="direccion" [(ngModel)]="direccion" placeholder="Dirección" class="checkout__input__add">
                             <input type="text" placeholder="Referencia de dirección (opcional)">
                         </div>
                         <div class="checkout__input">
@@ -61,6 +61,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__order">
+                                    <div class="shoping__discount">
+                                        <h5 >Cupón Descuento</h5>
+                                        <form action="#">
+                                            <input type="text" id="txtCupon" placeholder="Ingresaa código cupón">
+                                            <a style="cursor: pointer;"  (click)="__on_aplicar_cupon()" class="site-btn">Aplicar Cupón</a>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
@@ -69,7 +83,8 @@
                             <ul>
                                 <li *ngFor="let d of detallePedido">{{(d.nombreProducto+"").substring(0,15) + ((d.nombreProducto+"").length> 15 ? " ...": "" )}} x {{d.cantidad}}<span>S/. {{d.total}}</span></li>
                             </ul>
-                            <div class="checkout__order__subtotal">Subtotal <span>S/. {{total | number: '1.1'}} </span></div>
+                            <div class="checkout__order__subtotal">Subtotal <span>S/. {{subtotal | number: '1.1'}} </span></div>
+                            <div class="checkout__order__subtotal">Descuento <span>S/. {{descuento | number: '1.1'}} </span></div>
                             <div class="checkout__order__total">Total <span>S/. {{total | number: '1.1'}}</span></div>
 
                             <button type="button" (click)="__on_actualizarEstado_pedido()" class="site-btn">Finalizar Compra</button>

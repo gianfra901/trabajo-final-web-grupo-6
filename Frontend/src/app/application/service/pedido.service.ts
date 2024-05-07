@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PedidoModel } from '../models/PedidoModel';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PedidoService {
     .set('Authorization', 'Bearer ' + bearer)
     .set('Content-Type','application/json');
 
-    let resp = this.http.delete<any>(`https://localhost:7027/api/Pedido?idpedido=${idPedido}&idproducto=${idProducto}`, {headers})
+    let resp = this.http.delete<any>(`${environment.apiUrl}/Pedido?idpedido=${idPedido}&idproducto=${idProducto}`, {headers})
     return resp;
   }
 
@@ -29,7 +30,7 @@ export class PedidoService {
       cantidad: cantidad
     }) ;
 
-    let resp = this.http.put<any>('https://localhost:7027/api/Pedido', body , {headers})
+    let resp = this.http.put<any>(`${environment.apiUrl}/Pedido`, body , {headers})
     return resp;
   }
 
@@ -42,7 +43,7 @@ export class PedidoService {
       realizado: realizado
     }) ;
 
-    let resp = this.http.patch<any>('https://localhost:7027/api/Pedido', body , {headers})
+    let resp = this.http.patch<any>(`${environment.apiUrl}/Pedido`, body , {headers})
     return resp;
   }
 
@@ -52,7 +53,7 @@ export class PedidoService {
     .set('Authorization', 'Bearer ' + bearer)
     .set('Content-Type','application/json');
 
-    let resp = this.http.post<any>('https://localhost:7027/api/Pedido', pedido , {headers})
+    let resp = this.http.post<any>(`${environment.apiUrl}/Pedido`, pedido , {headers})
     return resp;
   }
   __obtener_pedido(bearer: string, pedido: string) {
@@ -60,17 +61,7 @@ export class PedidoService {
     .set('Authorization', 'Bearer ' + bearer)
     .set('Content-Type','application/json');
 
-    let resp = this.http.get(`https://localhost:7027/api/Pedido?pedido=${pedido}`, {headers})
+    let resp = this.http.get(`${environment.apiUrl}/Pedido?pedido=${pedido}`, {headers})
     return resp;
   }
 }
-
-// {
-//   idPedido: "",
-//   idCliente:  "",
-//   totalVenta: 0,
-//   realizado: 1,
-//   idProducto: "P001",
-//   cantidad: 1,
-//   precio: 45
-// } 

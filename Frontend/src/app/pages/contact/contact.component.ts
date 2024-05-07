@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../application/service/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { TOASTR_TOKEN, Toastr } from '../../application/service/toastr.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,8 @@ export class ContactComponent {
   correo: string = "";
   constructor(
     private readonly authService: AuthService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
   ) {}
   
   contactusForm = this.fb.group({
@@ -22,9 +24,11 @@ export class ContactComponent {
   })
   __on_enviar() {
     if(this.contactusForm.valid) {
-      console.log(this.contactusForm.value)
+      this.nombresyApellidos = "";
+      this.correo = "";
+      this.success("Mensaje enviado")
     } else {
-      alert("Formulario no valido")
+      this.error("Formulario no valido")
     }
   }
   ngOnInit() :void {
@@ -34,5 +38,11 @@ export class ContactComponent {
       this.nombresyApellidos = usuarioLS.nombres+' '+usuarioLS.apellidos;
       this.correo = usuarioLS.correo;
     }
-  }  
+  }
+  error(message: string): void {
+    this.toastr.error(message, "Error");
+  }
+  success(message: string): void {
+    this.toastr.success(message, "Éxito");
+  }   
 }
